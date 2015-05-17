@@ -1,14 +1,57 @@
 <head>
-  <title>casual-care-pool</title>
+  <title>Casual Care Pool</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <header>
+    <h1>Casual Care Pool</h1>
 
-  {{> hello}}
+    {{> loginButtons}}
+  </header>
+  <section class="main">
+    {{> home}}
+  </section>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="home">
+  {{#if currentUser}}
+    {{#if currentUser.profile.name}}
+      {{> dashboard}}
+    {{else}}
+      {{> onboarding}}
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name="dashboard">
+  <h2>Dashboard</h2>
+  <p>
+    Welcome, {{currentUser.profile.name}}
+  </p>
+</template>
+
+<template name="onboarding">
+  <h2>Tell us about you.</h2>
+  <form class="aboutYou">
+    <div>
+      <label>
+        Name
+        <input type="text" name="name"/>
+      </label>
+    </div>
+    <div>
+      <label>
+        Mobile Number
+        <input name="mobileNumber" type="tel" placeholder="415-867-5309"/>
+      </label>
+    </div>
+    <div>
+      <label>
+        Address
+        <input type="text" name="address" placeholder="123 Main St" />
+      </label>
+    </div>
+    <input type="submit"/>
+  </form>
 </template>
