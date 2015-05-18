@@ -16,7 +16,7 @@
 
 <template name="home">
   {{#if currentUser}}
-    {{#if currentUser.profile.name}}
+    {{#if onboardingComplete}}
       {{> dashboard}}
     {{else}}
       {{> onboarding}}
@@ -32,8 +32,43 @@
 </template>
 
 <template name="onboarding">
+  {{#if profileMissing}}
+    {{> aboutYou}}
+  {{else}}
+    {{#if hasNoDogs}}
+      {{> addDog}}
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name="addDog">
+  <h2>Tell us about your dog.</h2>
+  <form class="dog">
+    <div>
+      <label>
+        Name
+        <input type="text" name="name" placeholder="Max"/>
+      </label>
+    </div>
+    <div>
+      <label>
+        Birthdate
+        <input type="date" name="birthdate" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Breed
+        <input type="text" name="breed" placeholder="Corgi" />
+      </label>
+    </div>
+    <input type="submit" />
+  </form>
+</template>
+
+<template name="aboutYou">
   <h2>Tell us about you.</h2>
-  <form class="aboutYou">
+  <form class="profile">
     <div>
       <label>
         Name
