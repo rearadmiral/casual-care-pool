@@ -1,0 +1,9 @@
+<template name="requestAWalk">
+  <div>
+    {{#unless expanded}}
+      <a href="#" class="expand">Request a walk</a> for {{dogNames}}
+    {{else}}
+      {{> quickForm id="requestWalkForm" schema=walkSchema type="method" meteormethod="requestWalk"}}
+    {{/unless}}
+  </div>
+</template>

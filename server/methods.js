@@ -1,4 +1,10 @@
 Meteor.methods({
+  requestWalk: function(doc) {
+    var result = Walks.insert({
+      plannedAt: doc.plannedAt,
+      requester: Meteor.userId()
+    });
+  },
   addDog: function(attrs) {
     var result = Meteor.users.update(
       Meteor.userId(),

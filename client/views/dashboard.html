@@ -3,4 +3,13 @@
   <p>
     Welcome, {{currentUser.profile.name}}
   </p>
+  <ul>
+    {{#each walks}}
+      <li>{{_id}} - {{plannedAt}}</li>
+    {{else}}
+      No upcoming walks.
+    {{/each}}
+  </ul>
+
+  {{> requestAWalk}}
 </template>
