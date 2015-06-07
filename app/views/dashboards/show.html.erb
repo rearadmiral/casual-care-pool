@@ -1,0 +1,36 @@
+<h1>
+  Welcome, <%= @owner.name %>
+</h1>
+
+<% if @owner.dogs.any? %>
+  <div>
+    <%= render partial: 'dog', collection: @owner.dogs %>
+  </div>
+<% else %>
+  <h2>
+    Tell us about your dog...
+  </h2>
+
+  <%= form_for(@owner.dogs.build) do |f| %>
+    <div>
+      <label>
+        Name
+        <%= f.text_field :name %>
+      </label>
+    </div>
+    <div>
+      <label>
+        Birthdate
+        <%= f.date_field :birthdate %>
+      </label>
+    </div>
+    <div>
+      <label>
+        Photo
+        <%= f.file_field :photo %>
+      </label>
+    </div>
+
+    <%= f.submit %>
+  <% end %>
+<% end %>

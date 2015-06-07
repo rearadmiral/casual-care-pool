@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  birthdate: 2015-06-06
+  breed: MyString
+  weight_in_pounds: 
+
+two:
+  name: MyString
+  birthdate: 2015-06-06
+  breed: MyString
+  weight_in_pounds: 
