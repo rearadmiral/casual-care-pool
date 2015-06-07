@@ -4,6 +4,12 @@
   color: green;
 }
 
+.inPlaceEditableField__cancel {
+  color: grey;
+  font-weight: bold;
+  margin-left: 1em;
+}
+
 .inPlaceEditableField__readonlySection {
   cursor: pointer;
   &:hover:after {

@@ -15,26 +15,34 @@ InPlaceEditableField = React.createClass({
     };
   },
 
+  getRootElement: function() {
+    return $(React.findDOMNode(this));
+  },
+
+  getInputElement: function() {
+    return this.getRootElement().find("input[type!=hidden]");
+  },
+
   switchToEditMode: function() {
     this.setState({editingMode: true});
+    this.getInputElement().focus();
   },
 
   componentDidMount: function() {
-    var root = React.findDOMNode(this);
-    $(root).find("input[type!=hidden]").blur(this.submit).val(this.state.value);
-    $(root).parents('form').on('ajax:success', this.saveSuccess);
+    this.getInputElement().blur(this.submit).val(this.state.value);
+    this.getRootElement().parents('form').on('ajax:success', this.saveSuccess);
   },
 
   componentWillUnmount: function() {
-    var root = React.findDOMNode(this);
-    $(root).find("input[type!=hidden]").off('blur', this.submit);
-    $(root).parents('form').off('ajax:success', this.saveSuccess);
+    this.getInputElement().off('blur', this.submit);
+    this.getRootElement().parents('form').off('ajax:success', this.saveSuccess);
   },
 
   saveSuccess: function() {
-    var root = React.findDOMNode(this);
-    var newValue = $(root).find("input[type!=hidden]").val();
-    this.setState({successShown: true, editingMode: false, value: newValue });
+    var newValue = this.getInputElement().val();
+    this.setState({successShown: true,
+                   editingMode: false,
+                   value: newValue });
     var self = this;
     setTimeout(function() {
       self.setState({successShown: false});
@@ -42,8 +50,7 @@ InPlaceEditableField = React.createClass({
   },
 
   submit: function() {
-    var root = React.findDOMNode(this);
-    $(root).trigger("submit.rails");
+    this.getRootElement().trigger("submit.rails");
   },
 
   render: function() {
