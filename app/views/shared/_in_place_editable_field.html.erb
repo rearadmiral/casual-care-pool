@@ -1,0 +1,13 @@
+<%
+  value = model.send(attribute)
+%>
+<%= form_for(model, remote: true, class: 'inPlaceEditableField__form') do |f| %>
+  <label class="inPlaceEditableField__label">
+    <%= label %>
+  </label>
+  <% input_field = f.send(field_type, attribute, field_options) %>
+  <%= react_component 'InPlaceEditableField', {
+                                                inputField: input_field,
+                                                currentValue: value
+                                              } %>
+<% end %>

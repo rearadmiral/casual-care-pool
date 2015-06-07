@@ -1,0 +1,14 @@
+.inPlaceEditableField__successIcon {
+  display: inline;
+  margin: 0 5px;
+  color: green;
+}
+
+.inPlaceEditableField__readonlySection {
+  cursor: pointer;
+  &:hover:after {
+    margin-left: 1em;
+    content: '✎';
+    color: grey;
+  }
+}

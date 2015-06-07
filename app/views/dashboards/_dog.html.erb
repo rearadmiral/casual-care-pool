@@ -1,6 +1,6 @@
 <div>
   <h2>
-    <%= dog.name %>
+    <%= link_to dog.name, dog_path(dog) %>
   </h2>
   <%= image_tag dog.photo.url(:thumb) %>
 </div>

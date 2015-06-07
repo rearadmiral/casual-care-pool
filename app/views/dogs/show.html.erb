@@ -1,0 +1,23 @@
+<h1>
+  <%= @dog.name %>
+</h1>
+
+<%= image_tag @dog.photo.url(:medium) %>
+
+<div>
+  <label>Age</label>
+  <%= distance_of_time_in_words(Time.now, @dog.birthdate, true, highest_measure_only: true) %>
+</div>
+
+<%= in_place_editable_field @dog, :breed, field_options: { placeholder: 'loveable mutt' } %>
+
+<div>
+  <label>Weight</label>
+  <% if @dog.weight_in_pounds %>
+    <%= @dog.weight_in_pounds %> lbs.
+  <% else %>
+    <%= form_for(@dog, remote: true, data: { 'submit-on-blur' => true }) do |f| %>
+      <%= f.number_field :weight_in_pounds, in: 1..200, step: 1 %> lbs.
+    <% end %>
+  <% end %>
+</div>
