@@ -8,6 +8,7 @@
   <% input_field = f.send(field_type, attribute, field_options) %>
   <%= react_component 'InPlaceEditableField', {
                                                 inputField: input_field,
-                                                currentValue: value
+                                                currentValue: value,
+                                                units: field_options[:units]
                                               } %>
 <% end %>
