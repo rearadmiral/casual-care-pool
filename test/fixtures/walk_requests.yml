@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  walker_id: 
+  walk_id: 1
+
+two:
+  walker_id: 
+  walk_id: 1

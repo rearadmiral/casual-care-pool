@@ -1,0 +1,61 @@
+<h1>
+  Ask a Friend to Walk <%= @walk.dog.name %>
+</h1>
+
+<p>
+  <%= @walk.requested_at.strftime('%A, %-e %B') %>
+  <%= @walk.requested_at.strftime('%r') %>
+</p>
+
+<%= form_for([@walk, @walk_request]) do |f| %>
+  <% if @walk_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@walk_request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @walk_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <label>
+      Friend:
+      <%= f.select :walker_id, @friends.map { |owner| [owner.name, owner.id]}, include_blank: true %>
+    </label>
+  </div>
+
+  <%= f.hidden_field :walk_id %>
+
+  <div>
+      How to contact?
+
+      <div>
+        <label>
+          <%= f.radio_button :contact_method, 'Email' %>
+          Email only
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <%= f.radio_button :contact_method, 'SMS' %>
+          SMS (Text Message) only
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <%= f.radio_button :contact_method, 'Both' %>
+          Both
+        </label>
+      </div>
+
+  </div>
+
+  <div>
+    <%= f.submit 'Send Request' %>
+  </div>
+<% end %>

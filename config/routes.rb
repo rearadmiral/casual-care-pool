@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get '/', controller: 'dashboards', action: 'show'
+  root controller: 'dashboards', action: 'show'
+  resources :walks do
+    resources :walk_requests
+  end
   resources :dogs
   resources :owners
 end

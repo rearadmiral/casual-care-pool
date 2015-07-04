@@ -1,4 +1,5 @@
 InPlaceEditableField = React.createClass({
+  // TODO: use clickaway
 
   propTypes: {
     editingMode: React.PropTypes.bool,

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  Walk for <%= @walk.dog.name %>
+</h2>
+
+<p>
+  <%= link_to 'Edit', edit_walk_path(@walk) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @walk.name %>
+</p>
+
+<p>
+  <strong>Requested at:</strong>
+  <%= @walk.requested_at.strftime('%A, %-e %B') %>
+  <%= @walk.requested_at.strftime('%r') %>
+</p>
+
+<% if @walk.walker.nil? %>
+  <p>No one has signed up for this walk yet.</p>
+  <%= link_to 'Ask a Friend', '#' %>
+<% else %>
+  <p>
+    <strong>Walker:</strong>
+    <%= @walk.walker_id %>
+  </p>
+<% end %>

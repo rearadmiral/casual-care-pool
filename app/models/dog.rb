@@ -1,4 +1,5 @@
 class Dog < ActiveRecord::Base
+  has_many :walks
   belongs_to :owner
   has_attached_file :photo,
       styles: { medium: "192x192>",

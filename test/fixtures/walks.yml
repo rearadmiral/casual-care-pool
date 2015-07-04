@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  requested_at: 2015-07-03 16:12:45
+  finished_at: 2015-07-03 16:12:45
+  dog_id: 1
+  walker_id: 1
+
+two:
+  name: MyString
+  requested_at: 2015-07-03 16:12:45
+  finished_at: 2015-07-03 16:12:45
+  dog_id: 1
+  walker_id: 1

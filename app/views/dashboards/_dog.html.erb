@@ -3,4 +3,31 @@
     <%= link_to dog.name, dog_path(dog) %>
   </h2>
   <%= image_tag dog.photo.url(:thumb) %>
+
+  <h3>
+    Upcoming Walks
+  </h3>
+
+  <% if dog.walks.upcoming.any? %>
+    <ul>
+      <% dog.walks.upcoming.each do |walk| %>
+        <li>
+          <%= link_to walk.requested_at.strftime("%A, %-e %B %r"), walk_path(walk.id) %> — <%= walk.name %>
+          —
+          <% if walk.walker %>
+            <%= walk.walker.name %> has signed up.
+          <% else %>
+            No one has signed up. <%= link_to 'Ask a friend', new_walk_walk_request_path(walk_id: walk.id) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to 'Request a Walk', new_walk_path(dog_id: dog) %>
+
+
+  <h4>
+    Finished Walks
+  </h4>
 </div>
