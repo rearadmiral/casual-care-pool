@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704003452) do
+ActiveRecord::Schema.define(version: 20150704035306) do
 
   create_table "dogs", force: :cascade do |t|
     t.string   "name"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20150704003452) do
     t.datetime "updated_at",     null: false
     t.string   "contact_method"
   end
+
+  add_index "walk_requests", ["walk_id", "walker_id"], name: "index_walk_requests_on_walk_id_and_walker_id", unique: true
 
   create_table "walks", force: :cascade do |t|
     t.string   "name"

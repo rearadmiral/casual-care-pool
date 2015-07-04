@@ -1,0 +1,22 @@
+<div class="walk--details">
+  <div class="walk__requestedAt">
+    <%= link_to walk.requested_at.strftime("%A, %-e %B %r"), walk_path(walk.id) %>
+    <%= walk.name %>
+  </div>
+
+  <% if walk.walker %>
+    <div class="walk__walker">
+      <%= walker.walker.name %> has signed up.
+    </div>
+  <% else %>
+
+    <% if walk.walk_requests.any? %>
+      <% ask_label = 'Ask another friend' %>
+      <%= link_to pluralize(walk.walk_requests.count, 'request'), walk_walk_requests_path(walk_id: walk.id) %> have already been sent.
+    <% else %>
+      <% ask_label = 'Ask a friend' %>
+      You haven't asked anyone to take this walk.
+    <% end %>
+    <%= link_to ask_label, new_walk_walk_request_path(walk_id: walk.id) %>
+  <% end %>
+</div>

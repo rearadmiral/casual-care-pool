@@ -8,24 +8,17 @@
     Upcoming Walks
   </h3>
 
-  <% if dog.walks.upcoming.any? %>
-    <ul>
+  <div class="walks">
+    <% if dog.walks.upcoming.any? %>
       <% dog.walks.upcoming.each do |walk| %>
-        <li>
-          <%= link_to walk.requested_at.strftime("%A, %-e %B %r"), walk_path(walk.id) %> — <%= walk.name %>
-          —
-          <% if walk.walker %>
-            <%= walk.walker.name %> has signed up.
-          <% else %>
-            No one has signed up. <%= link_to 'Ask a friend', new_walk_walk_request_path(walk_id: walk.id) %>
-          <% end %>
-        </li>
+        <%= render partial: 'shared/walks/details', locals: { walk: walk } %>
       <% end %>
-    </ul>
-  <% end %>
+    <% end %>
+  </div>
 
-  <%= link_to 'Request a Walk', new_walk_path(dog_id: dog) %>
-
+  <div class="walks__actions">
+    <%= link_to 'Request a Walk', new_walk_path(dog_id: dog) %>
+  </div>
 
   <h4>
     Finished Walks

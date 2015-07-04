@@ -1,0 +1,23 @@
+<section class="walk walk--compact">
+  <h1>Walk for <%= walk.dog.name %></h1>
+  <h2>
+    <span class="walk__requestedAtDate">
+      <%= @walk.requested_at.strftime('%A, %-e %B') %>
+    </span>
+    <span class="walk__requestedAtTime">
+      <%= @walk.requested_at.strftime('%r') %>
+    </span>
+  </h2>
+
+  <h3>
+    Pending Requests
+  </h3>
+  <ul>
+    <% walk.walk_requests.each do |walk_request| %>
+      <li>
+        Asked <%= link_to walk_request.walker.name, owner_path(walk_request.walker) %> <%= time_ago_in_words(walk_request.created_at) %> ago
+      </li>
+    <% end %>
+  </ul>
+
+</section>

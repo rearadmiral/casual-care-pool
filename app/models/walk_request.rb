@@ -4,5 +4,6 @@ class WalkRequest < ActiveRecord::Base
 
   validates :walk, presence: true
   validates :walker, presence: true
+  validates :walker, uniqueness: { scope: :walk }
 
 end
