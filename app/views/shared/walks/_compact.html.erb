@@ -6,6 +6,12 @@
     </span>
   </h2>
 
+  <% if walk.walker %>
+    <div>
+      ✔ Accepted by <%= walk.walker.name %> <%= time_ago_in_words(walk.walk_requests.confirmed.responded_at) %> ago
+    </div>
+  <% end %>
+
   <h3>
     Pending Requests
   </h3>

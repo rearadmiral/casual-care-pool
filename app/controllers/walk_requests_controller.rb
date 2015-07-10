@@ -15,8 +15,7 @@ class WalkRequestsController < ApplicationController
   end
 
   def confirm
-    @walk.walker = current_user
-    if (@walk.save)
+    if (@walk_request.confirm(current_user))
       redirect_to walk_url(@walk.id)
     else
       flash[:error] = @walk_request.errors.join(" ")

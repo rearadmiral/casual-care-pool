@@ -10,6 +10,12 @@
   Requested by <%= @walk_request.owner.name %>
 </div>
 
+<% if @walk.walker %>
+  <div>
+    ✔ Accepted by <%= @walk.walker.name %> <%= time_ago_in_words(@walk.walk_requests.confirmed.responded_at) %> ago
+  </div>
+<% end %>
+
 <div class="walkRequest__actions">
   <% if @is_own_request %>
     <%= button_to 'Cancel Request',
