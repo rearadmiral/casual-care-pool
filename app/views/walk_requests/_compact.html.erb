@@ -1,0 +1,13 @@
+<div class="walkRequest walkRequest--compact">
+  <span class="walkRequest__datetime">
+    <%= link_to short_datetime(walk_request.walk.requested_at),
+          walk_request_path(walk_id: walk_request.walk_id, id: walk_request.id) %>
+  </span>
+  <span class="walkRequest__owner">
+    <%= walk_request.owner.name %>
+  </span>
+  requested a walk for
+  <span class="walkRequest__dog">
+    <%= walk_request.dog.name %>
+  </span>
+</div>

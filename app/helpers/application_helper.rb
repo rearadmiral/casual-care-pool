@@ -15,4 +15,8 @@ module ApplicationHelper
                   }
   end
 
+  def short_datetime(datetime)
+    datetime.strftime('%A, %-e %B %-I:%M %p')
+  end
+
 end

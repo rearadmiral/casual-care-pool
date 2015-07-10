@@ -2,10 +2,7 @@
   <h1>Walk for <%= walk.dog.name %></h1>
   <h2>
     <span class="walk__requestedAtDate">
-      <%= @walk.requested_at.strftime('%A, %-e %B') %>
-    </span>
-    <span class="walk__requestedAtTime">
-      <%= @walk.requested_at.strftime('%r') %>
+      <%= short_datetime(@walk.requested_at) %>
     </span>
   </h2>
 
@@ -15,7 +12,9 @@
   <ul>
     <% walk.walk_requests.each do |walk_request| %>
       <li>
-        Asked <%= link_to walk_request.walker.name, owner_path(walk_request.walker) %> <%= time_ago_in_words(walk_request.created_at) %> ago
+        Asked
+        <%= link_to walk_request.walker.name, owner_path(walk_request.walker) %>
+        <%= time_ago_in_words(walk_request.created_at) %> ago
       </li>
     <% end %>
   </ul>

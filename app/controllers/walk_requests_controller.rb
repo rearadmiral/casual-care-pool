@@ -1,7 +1,8 @@
 class WalkRequestsController < ApplicationController
 
   before_action :set_walk
-  before_action :set_friends
+  before_action :set_walk_request, only: [:show, :confirm]
+  before_action :set_friends, only: [:new, :create]
 
   def create
     @walk_request = WalkRequest.create(walk_request_params)
@@ -13,6 +14,18 @@ class WalkRequestsController < ApplicationController
     end
   end
 
+  def confirm
+    @walk_request.walker = current_user
+    if (@walk_request.save)
+
+    else
+      flash[:error] = @walk_request.errors.join(" ")
+    end
+  end
+
+  def show
+  end
+
   def new
     @walk_request = WalkRequest.new
     @walk_request.walk = @walk
@@ -20,6 +33,11 @@ class WalkRequestsController < ApplicationController
   end
 
   private
+
+  def set_walk_request
+    @walk_request = @walk.walk_requests.find(params[:id])
+    @is_own_request = @walk.owner == current_user
+  end
 
   def set_friends
     @friends = Owner.last(25) - [current_user]

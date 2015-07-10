@@ -1,0 +1,22 @@
+<h1>
+  Walk Request for <%= @walk_request.dog.name %>
+</h1>
+
+<h2>
+  <%= short_datetime(@walk.requested_at) %>
+</h2>
+
+<div>
+  Requested by <%= @walk_request.owner.name %>
+</div>
+
+<div class="walkRequest__actions">
+  <% if @is_own_request %>
+    <%= button_to 'Cancel Request',
+          walk_request_path(walk_id: @walk.id, id: @walk_request.id),
+          method: :delete %>
+  <% else %>
+    <%= button_to "Walk #{@walk_request.dog.name}",
+          walk_request_confirm_path(walk_id: @walk.id, request_id: @walk_request.id) %>
+  <% end %>
+</div>

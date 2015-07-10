@@ -2,10 +2,20 @@
   Welcome, <%= @owner.name %>
 </h1>
 
+<% if @incoming_walk_requests.any? %>
+  <section class="walkRequests">
+   <h1>
+     Walk Requests
+   </h1>
+
+   <%= render partial: 'walk_requests/compact', collection: @incoming_walk_requests, as: :walk_request %>
+  </section>
+<% end %>
+
 <% if @owner.dogs.any? %>
-  <div>
+  <section class="dogs">
     <%= render partial: 'dog', collection: @owner.dogs %>
-  </div>
+  </section>
 <% else %>
   <h2>
     Tell us about your dog...

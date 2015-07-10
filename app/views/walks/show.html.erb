@@ -15,8 +15,7 @@
 
 <p>
   <strong>Requested at:</strong>
-  <%= @walk.requested_at.strftime('%A, %-e %B') %>
-  <%= @walk.requested_at.strftime('%r') %>
+  <%= short_datetime(@walk.requested_at) %>
 </p>
 
 <% if @walk.walker.nil? %>

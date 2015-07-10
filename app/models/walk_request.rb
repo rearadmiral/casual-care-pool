@@ -6,4 +6,12 @@ class WalkRequest < ActiveRecord::Base
   validates :walker, presence: true
   validates :walker, uniqueness: { scope: :walk }
 
+  def dog
+    walk.dog
+  end
+
+  def owner
+    dog.owner
+  end
+
 end

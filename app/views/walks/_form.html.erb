@@ -17,7 +17,10 @@
   </div>
   <div class="field">
     <%= f.label :requested_at %><br>
-    <%= f.datetime_local_field :requested_at %>
+    <%= f.datetime_local_field :requested_at,
+          step: 15.minutes,
+          min: Time.parse("12:00:00"),
+          max: Time.parse("12:00:00") + 3.months %>
   </div>
   <%= f.hidden_field :dog_id %>
   <div class="actions">

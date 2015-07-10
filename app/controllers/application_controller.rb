@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
-    @owner ||= Owner.first
+    Owner.last
   end
 end

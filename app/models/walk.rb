@@ -9,4 +9,8 @@ class Walk < ActiveRecord::Base
   validates :dog, presence: true
   validates :requested_at, presence: true
 
+  def owner
+    dog.owner
+  end
+
 end

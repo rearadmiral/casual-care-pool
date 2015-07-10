@@ -3,8 +3,7 @@
 </h1>
 
 <p>
-  <%= @walk.requested_at.strftime('%A, %-e %B') %>
-  <%= @walk.requested_at.strftime('%r') %>
+  <%= short_datetime(@walk.requested_at) %>
 </p>
 
 <%= form_for([@walk, @walk_request]) do |f| %>
