@@ -15,9 +15,9 @@ class WalkRequestsController < ApplicationController
   end
 
   def confirm
-    @walk_request.walker = current_user
-    if (@walk_request.save)
-
+    @walk.walker = current_user
+    if (@walk.save)
+      redirect_to walk_url(@walk.id)
     else
       flash[:error] = @walk_request.errors.join(" ")
     end
@@ -35,7 +35,7 @@ class WalkRequestsController < ApplicationController
   private
 
   def set_walk_request
-    @walk_request = @walk.walk_requests.find(params[:id])
+    @walk_request = @walk.walk_requests.find(params[:id] || params[:request_id])
     @is_own_request = @walk.owner == current_user
   end
 

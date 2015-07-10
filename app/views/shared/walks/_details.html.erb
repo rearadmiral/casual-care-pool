@@ -12,7 +12,7 @@
 
     <% if walk.walk_requests.any? %>
       <% ask_label = 'Ask another friend' %>
-      <%= link_to pluralize(walk.walk_requests.count, 'request'), walk_requests_path(walk_id: walk.id) %> have already been sent.
+      <%= link_to pluralize(walk.walk_requests.count, 'request'), walk_request_index_path(walk_id: walk.id) %> have already been sent.
     <% else %>
       <% ask_label = 'Ask a friend' %>
       You haven't asked anyone to take this walk.

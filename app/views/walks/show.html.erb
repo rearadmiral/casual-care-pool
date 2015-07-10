@@ -20,10 +20,10 @@
 
 <% if @walk.walker.nil? %>
   <p>No one has signed up for this walk yet.</p>
-  <%= link_to 'Ask a Friend', '#' %>
+  <%= link_to 'Ask a Friend', new_walk_request_path(walk_id: walk.id) %>
 <% else %>
   <p>
     <strong>Walker:</strong>
-    <%= @walk.walker_id %>
+    <%= @walk.walker.name %>
   </p>
 <% end %>
